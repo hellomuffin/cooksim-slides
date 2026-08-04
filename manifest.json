@@ -674,20 +674,21 @@
         }
       ],
       "added_utc": "2026-08-04T06:32:22Z",
-      "updated_utc": "2026-08-04T14:07:25Z",
+      "updated_utc": "2026-08-04T14:44:10Z",
       "render_note": "Re-rendered on freshly relaunched Unity instances. An earlier upload shipped with degraded navigation (cross-room walks of 7-14 frames where a healthy instance gives 37-61) which made the agent appear to FLOAT between rooms; cause was ENGINE_NOTES B3, ghost state accumulating across many episodes on one long-lived instance. make_slide_clips.py now health-checks walk frame counts and refuses to cut a degraded render. Two clips use substituted cases, recorded per-clip in source_case: skipped_step uses det3_skip_3 (skip_1/_2 trip the zero-frame PutIn gate, which is left in place), and wrong_placement runs on appliance_hard because every routine_hard variant hangs Unity on that episode's final setup command even with processing_time_limit raised to 300s.",
       "action_examples": [
         {
           "file": "vh_act_go_to_fridge.mp4",
           "action": "go to the fridge",
-          "duration_s": 6.5,
+          "duration_s": 3.1,
           "view": "first-person only",
           "playback_speed": 1.0,
           "source_render": "vh_gt_routine",
           "frames": [
-            119,
+            143,
             167
-          ]
+          ],
+          "note": "Starts INSIDE the kitchen with the fridge already in view, so the command's preconditions hold from frame 1. The earlier cut began in the living room and walked through a doorway first."
         },
         {
           "file": "vh_act_put_book_on_coffeetable.mp4",
