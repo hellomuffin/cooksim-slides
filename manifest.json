@@ -523,5 +523,153 @@
       "has_dialog_bubble": true,
       "bytes": 899738
     }
-  ]
+  ],
+  "engines": {
+    "virtualhome": {
+      "engine": "vh-streaming-engine",
+      "note": "VirtualHome clips. Same conventions as the CookSim clips: top-down pane LEFT, first-person RIGHT, no audio stream, no overlay on the action_error group. Error clips play at 3x; the ground-truth clip plays at 1x (see its speed_exception). Frame ranges refer to each render's own frame numbering -- VirtualHome re-renders are not frame-identical, so ranges are not comparable across renders of the same case.",
+      "groups": [
+        {
+          "id": "gt_completion",
+          "title": "Room tidy completion (ground truth)",
+          "description": "A clean run of the long-horizon tidy task -- 'Tidy up across all the rooms: turn off every device that is on and close anything left open' (episode tidy_hard). No injected error, no assistant, no dialogue."
+        },
+        {
+          "id": "action_error",
+          "title": "Action errors (one per error type, PURE ACTION)",
+          "description": "One clip per class in the six-class VirtualHome taxonomy, cut to the ERROR MOMENT only: a short run-up, the agent doing the wrong thing, a short tail. No assistant, no speech, no subtitle, no recovery. Each error is injected by behavior_lib_vh into the routine_hard plan and verified symbolically before rendering, so it fires at a known item and the clip is cut exactly around it. These run on routine_hard, not the tidy task: tidy_hard has no fetch/deposit subgoal, so wrong_object and wrong_placement are not expressible there."
+        }
+      ],
+      "error_taxonomy_covered": [
+        "navigation_inefficiency",
+        "repetition",
+        "skipped_step",
+        "stall",
+        "wrong_object",
+        "wrong_placement"
+      ],
+      "clips": [
+        {
+          "group": "gt_completion",
+          "file": "vh_gt_tidy_completion.mp4",
+          "error_type": null,
+          "source_case": "vh_gt_tidy",
+          "episode": "tidy_hard",
+          "source_frames": 66,
+          "playback_speed": 1.0,
+          "duration_s": 8.25,
+          "speed_exception": "plays at 1x, not the manifest default 3x: the task is only 8.2s of footage and 3x would leave 2.8s"
+        },
+        {
+          "group": "action_error",
+          "file": "vh_err_wrong_object.mp4",
+          "error_type": "wrong_object",
+          "source_case": "det3_wrongobj_1",
+          "episode": "routine_hard",
+          "error_frames": [
+            122,
+            212
+          ],
+          "clip_frames": [
+            102,
+            232
+          ],
+          "source_frames": 312,
+          "playback_speed": 3.0,
+          "duration_s": 5.42
+        },
+        {
+          "group": "action_error",
+          "file": "vh_err_wrong_placement.mp4",
+          "error_type": "wrong_placement",
+          "source_case": "det3_wrongplace_1",
+          "episode": "routine_hard",
+          "error_frames": [
+            338,
+            351
+          ],
+          "clip_frames": [
+            278,
+            350
+          ],
+          "source_frames": 350,
+          "playback_speed": 3.0,
+          "duration_s": 3.0
+        },
+        {
+          "group": "action_error",
+          "file": "vh_err_navigation_inefficiency.mp4",
+          "error_type": "navigation_inefficiency",
+          "source_case": "det3_nav_1",
+          "episode": "routine_hard",
+          "error_frames": [
+            116,
+            220
+          ],
+          "clip_frames": [
+            96,
+            240
+          ],
+          "source_frames": 453,
+          "playback_speed": 3.0,
+          "duration_s": 6.0
+        },
+        {
+          "group": "action_error",
+          "file": "vh_err_repetition.mp4",
+          "error_type": "repetition",
+          "source_case": "det3_rep_toggle_1",
+          "episode": "routine_hard",
+          "error_frames": [
+            290,
+            351
+          ],
+          "clip_frames": [
+            270,
+            371
+          ],
+          "source_frames": 479,
+          "playback_speed": 3.0,
+          "duration_s": 4.21
+        },
+        {
+          "group": "action_error",
+          "file": "vh_err_stall.mp4",
+          "error_type": "stall",
+          "source_case": "det3_stall_tr_1",
+          "episode": "routine_hard",
+          "error_frames": [
+            125,
+            173
+          ],
+          "clip_frames": [
+            105,
+            193
+          ],
+          "source_frames": 419,
+          "playback_speed": 3.0,
+          "duration_s": 3.67
+        },
+        {
+          "group": "action_error",
+          "file": "vh_err_skipped_step.mp4",
+          "error_type": "skipped_step",
+          "source_case": "det3_skip_3",
+          "episode": "routine_hard",
+          "error_frames": [
+            0,
+            66
+          ],
+          "clip_frames": [
+            0,
+            86
+          ],
+          "source_frames": 383,
+          "playback_speed": 3.0,
+          "duration_s": 3.58
+        }
+      ],
+      "added_utc": "2026-08-04T06:32:22Z"
+    }
+  }
 }
