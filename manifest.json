@@ -538,6 +538,11 @@
           "id": "action_error",
           "title": "Action errors (one per error type, PURE ACTION)",
           "description": "One clip per class in the six-class VirtualHome taxonomy, cut to the ERROR MOMENT only: a short run-up, the agent doing the wrong thing, a short tail. No assistant, no speech, no subtitle, no recovery. Each error is injected by behavior_lib_vh into the routine_hard plan and verified symbolically before rendering, so it fires at a known item and the clip is cut exactly around it. These run on routine_hard, not the tidy task: tidy_hard has no fetch/deposit subgoal, so wrong_object and wrong_placement are not expressible there."
+        },
+        {
+          "id": "action_examples",
+          "title": "Action examples (egocentric only)",
+          "description": "Two actions filmed from the first-person camera alone -- no top-down pane, no audio, 1x speed. Cut from a clean routine_hard render (no injected error). NOTE: these come from the scripted renderer ([Walk] <fridge>, [Put] <book> <coffeetable>), not the mid-level visibility-gated controller, so they show what the actions LOOK like but not the 'nearest visible' scan-to-find semantics."
         }
       ],
       "error_taxonomy_covered": [
@@ -669,8 +674,35 @@
         }
       ],
       "added_utc": "2026-08-04T06:32:22Z",
-      "updated_utc": "2026-08-04T08:59:27Z",
-      "render_note": "Re-rendered on freshly relaunched Unity instances. An earlier upload shipped with degraded navigation (cross-room walks of 7-14 frames where a healthy instance gives 37-61) which made the agent appear to FLOAT between rooms; cause was ENGINE_NOTES B3, ghost state accumulating across many episodes on one long-lived instance. make_slide_clips.py now health-checks walk frame counts and refuses to cut a degraded render. Two clips use substituted cases, recorded per-clip in source_case: skipped_step uses det3_skip_3 (skip_1/_2 trip the zero-frame PutIn gate, which is left in place), and wrong_placement runs on appliance_hard because every routine_hard variant hangs Unity on that episode's final setup command even with processing_time_limit raised to 300s."
+      "updated_utc": "2026-08-04T14:03:19Z",
+      "render_note": "Re-rendered on freshly relaunched Unity instances. An earlier upload shipped with degraded navigation (cross-room walks of 7-14 frames where a healthy instance gives 37-61) which made the agent appear to FLOAT between rooms; cause was ENGINE_NOTES B3, ghost state accumulating across many episodes on one long-lived instance. make_slide_clips.py now health-checks walk frame counts and refuses to cut a degraded render. Two clips use substituted cases, recorded per-clip in source_case: skipped_step uses det3_skip_3 (skip_1/_2 trip the zero-frame PutIn gate, which is left in place), and wrong_placement runs on appliance_hard because every routine_hard variant hangs Unity on that episode's final setup command even with processing_time_limit raised to 300s.",
+      "action_examples": [
+        {
+          "file": "vh_act_go_to_fridge.mp4",
+          "action": "go to the fridge",
+          "duration_s": 6.5,
+          "view": "first-person only",
+          "playback_speed": 1.0,
+          "source_render": "vh_gt_routine",
+          "frames": [
+            119,
+            167
+          ]
+        },
+        {
+          "file": "vh_act_put_book_on_coffeetable.mp4",
+          "action": "put the book on the coffee table",
+          "duration_s": 5.5,
+          "view": "first-person only",
+          "playback_speed": 1.0,
+          "source_render": "vh_gt_routine",
+          "frames": [
+            80,
+            119
+          ],
+          "note": "camera tilts down for the placement (ego pitch ladder)"
+        }
+      ]
     }
   }
 }
