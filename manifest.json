@@ -1,6 +1,6 @@
 {
   "schema": "cooksim-slides-manifest-v1",
-  "generated_utc": "2026-08-04T02:57:49Z",
+  "generated_utc": "2026-08-04T05:50:49Z",
   "site": "https://hellomuffin.github.io/cooksim-slides",
   "download_url_pattern": "https://raw.githubusercontent.com/hellomuffin/cooksim-slides/main/videos/<filename>",
   "note": "Every clip is side-by-side: top-down pane LEFT, first-person pane RIGHT. Tick ranges refer to the source episode's own tick numbering. EVERY clip plays at 3x real time and carries NO audio stream and no subtitle bar; group action_error carries no overlay at all, and group plan_intention carries only the dialog bubble above the cook's head.",
@@ -20,7 +20,7 @@
     {
       "id": "gt_completion",
       "title": "1 - Cheeseburger completion (ground truth)",
-      "description": "A clean, successful run of the common cheeseburger recipe on the medium map, filmed end to end. The cook executes the stored ground-truth plan with no injected error, no assistant and no dialogue. Top-down left, first-person right, both rendered from a single state per tick so the two panes cannot drift."
+      "description": "A clean, successful run of the common cheeseburger recipe on the medium map, filmed end to end. The cook executes the stored ground-truth plan with no injected error, no assistant and no dialogue. Top-down left, first-person right, both rendered from a single state per tick so the two panes cannot drift. This clip carries a recipe band across the top instead of the pane labels: the Cheeseburger's three components in the order the recipe demands - bun (raw), patty (fried), cheese (raw) - taken straight from the Recipe definition in cooksim/core/recipes.py, which is ordered, so the plate is only accepted when they are added in that sequence."
     },
     {
       "id": "action_error",
@@ -43,7 +43,7 @@
       "group": "gt_completion",
       "title": "Cheeseburger completion - ground truth",
       "subtitle": "the full successful trajectory, no error and no assistant",
-      "caption": "The cook executes the stored ground-truth plan for the Cheeseburger on the medium map and delivers the dish. Full trajectory, no injected error and no dialogue, played at 3x.",
+      "caption": "The cook executes the stored ground-truth plan for the Cheeseburger on the medium map and delivers the dish. Full trajectory, no injected error and no dialogue, played at 3x. The band across the top states the task: bun (raw) -> patty (fried) -> cheese (raw), added in that exact order.",
       "source_episode": "tmp/grid.json :: cell medium_nops_medium_map",
       "tick_range": "full trajectory",
       "tick_start": 0,
@@ -51,12 +51,12 @@
       "duration_seconds": 16.83,
       "playback_speed": 3.0,
       "width": 1920,
-      "height": 770,
-      "resolution": "1920x770",
+      "height": 838,
+      "resolution": "1920x838",
       "has_audio": false,
       "has_subtitles": false,
       "has_dialog_bubble": false,
-      "bytes": 7470085
+      "bytes": 7444552
     },
     {
       "id": "err_repeat_step",
